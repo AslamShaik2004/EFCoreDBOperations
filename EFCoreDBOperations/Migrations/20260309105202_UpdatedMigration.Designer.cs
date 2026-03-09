@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFCoreDBOperations.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260309095255_Added twoTale")]
-    partial class AddedtwoTale
+    [Migration("20260309105202_UpdatedMigration")]
+    partial class UpdatedMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -71,8 +71,8 @@ namespace EFCoreDBOperations.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<double>("Amount")
-                        .HasColumnType("float");
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
 
                     b.Property<int>("BookId")
                         .HasColumnType("int");
@@ -111,6 +111,32 @@ namespace EFCoreDBOperations.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Currencies");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Currency = "INR",
+                            Description = "Indian INR"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Currency = "Dollar",
+                            Description = "American Dollar"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Currency = "Euro",
+                            Description = "Europe Euro"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Currency = "Dinar",
+                            Description = "Kuwait Dinar"
+                        });
                 });
 
             modelBuilder.Entity("EFCoreDBOperations.Data.Language", b =>
@@ -132,6 +158,32 @@ namespace EFCoreDBOperations.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("languages");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Andhra Pradesh - Telugu",
+                            Title = "Telugu"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "India - Hindi",
+                            Title = "Hindi"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Karnataka - Kannada",
+                            Title = "Kannada"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "Tamilanadu - Tamil",
+                            Title = "Tamil"
+                        });
                 });
 
             modelBuilder.Entity("EFCoreDBOperations.Data.Book", b =>
